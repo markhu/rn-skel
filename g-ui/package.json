@@ -1,0 +1,47 @@
+{
+  "version": "0.3.19",
+  "private": true,
+  "scripts": {
+    "precommit": "lint-staged",
+    "lint:all": "find packages -iname tsconfig.json -maxdepth 2 -exec tslint --fix --project {} \\;",
+    "lint:mobile": "tslint --project packages/mobile",
+    "setup": "yarn && yarn setup:config && ./scripts/setup.sh",
+    "setup:config": "node ./scripts/config.js",
+    "process-coin-assets": "./scripts/process-coin-assets.sh",
+    "build:android": "./scripts/build-android.sh",
+    "build-ios": "./scripts/build-ios.sh",
+    "build:ios-debug": "./scripts/build-ios-debug.sh",
+    "start:android": "cd ./packages/mobile && ./node_modules/.bin/react-native run-android --variant=debugDev",
+    "wix-detox": "./scripts/wix-detox.sh",
+    "android-emu-list": "emulator -list-avds",
+    "git-testflight": "./scripts/git-log-messages.sh",
+    "ios-simulator": "open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/",
+    "ios-screenshot": "xcrun simctl io booted screenshot screenshot-$(date +%s).png",
+    "fix-buildToolsVer": "perl -pi.bak -e 's/ buildToolsVersion//s' ./packages/*/node_modules/{*,*/*}/android/{*/,}build.gradle",
+    "fix-linux-symlinks": "./scripts/fix-linux-symlinks.sh",
+    "version:bump": "node ./scripts/bump-version.js",
+    "version:bump-patch": "node ./scripts/bump-version.js patch",
+    "version:bump-minor": "node ./scripts/bump-version.js minor",
+    "version:bump-major": "node ./scripts/bump-version.js major",
+    "version:print": "node -e 'console.log(require(\"./package.json\").version)'",
+    "test": "cd packages/mobile && yarn test:unit"
+  },
+  "lint-staged": {
+    "packages/*/src/**/*.{js,jsx,ts,tsx,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.0",
+    "lodash": "^4.17.10",
+    "plist": "^3.0.1",
+    "prettier": "^1.11.1",
+    "tslint": "^5.9.1",
+    "typescript": "^2.8.3"
+  },
+  "devDependencies": {
+    "tslint-config-prettier": "^1.12.0"
+  }
+}

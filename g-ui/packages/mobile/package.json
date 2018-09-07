@@ -1,0 +1,148 @@
+{
+  "version": "0.3.19",
+  "private": true,
+  "scripts": {
+    "codecov:bash": "bash <(curl -s https://codecov.io/bash)",
+    "codecov:yaml": "curl --data-binary @codecov.yml https://codecov.io/validate",
+    "lint": "tslint --project .",
+    "prepare": "patch-package",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "storybook": "storybook start -p 7007",
+    "start:android:dev": "react-native run-android --variant debugDev",
+    "start:android:staging": "react-native run-android --variant debugStaging",
+    "svg:compile:coins": "svgr --native -d src/assets/coins/svgr src/assets/coins/svgo",
+    "svg:compile:icons": "svgr --native --replace-attr-values -d src/assets/icons/svgr src/assets/icons/svgo",
+    "jest-coverage-codecov": "jest --coverage src && codecov",
+    "jest-coverage-watch": "jest --coverage --watch src",
+    "test:unit": "jest src"
+  },
+  "dependencies": {
+    "@babel/core": "^7.0.0-rc.1",
+    "art": "^0.10.2",
+    "babel-core": "^6.26.3",
+    "d3": "^5.5.0",
+    "from-exponential": "^1.0.0",
+    "jsc-android": "224109.1.0",
+    "lodash": "^4.17.5",
+    "lottie-react-native": "^2.5.0",
+    "matter-attractors": "^0.1.6",
+    "matter-js": "^0.14.2",
+    "moment": "^2.22.2",
+    "numeral": "^2.0.6",
+    "react": "16.4.1",
+    "react-addons-shallow-compare": "^15.6.2",
+    "react-native": "^0.56.0",
+    "react-native-code-push": "^5.4.1",
+    "react-native-device-monitor": "^2.0.0",
+    "react-native-firebase": "^4.3.8",
+    "react-native-gesture-handler": "^1.0.7",
+    "react-native-haptic": "^1.0.9",
+    "react-native-input-scroll-view": "^1.6.7",
+    "react-native-linear-gradient": "^2.4.0",
+    "react-native-modalbox": "^1.4.2",
+    "react-native-reanimated": "^1.0.0-alpha.5",
+    "react-native-root-siblings": "^3.1.0",
+    "react-native-root-toast": "^3.0.1",
+    "react-native-sentry": "^0.38.0",
+    "react-native-svg": "^6.3.1",
+    "react-native-ui-lib": "^3.3.90",
+    "react-native-video": "^3.0.0",
+    "react-navigation": "^2.2.5",
+    "react-navigation-fluid-transitions": "^0.2.1",
+    "react-navigation-redux-helpers": "^1.1.2",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
+    "redux-persist": "^5.9.1",
+    "remotedev": "^0.2.7",
+    "rn-fetch-blob": "^0.10.12",
+    "rxjs": "^6.2.1",
+    "snakecase-keys": "^1.1.1",
+    "tinycolor2": "^1.4.1",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.12.0",
+    "unstated": "^2.1.1",
+    "unstated-connect": "^0.0.3",
+    "validator": "^10.4.0",
+    "why-did-you-update": "^0.1.1",
+    "zxcvbn": "^4.4.2"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^3.4.7",
+    "@storybook/addon-links": "^3.4.7",
+    "@storybook/addons": "^3.3.15",
+    "@storybook/react-native": "^3.4.7",
+    "@types/jest": "^23.3.1",
+    "@types/lodash": "^4.14.110",
+    "@types/mocha": "5.2.0",
+    "@types/numeral": "0.0.22",
+    "@types/react": "^16.4.11",
+    "@types/react-native": "^0.56.10",
+    "@types/react-navigation": "^1.5.2",
+    "@types/react-test-renderer": "^16.0.2",
+    "babel-jest": "^23.0.1",
+    "babel-preset-react-native": "5",
+    "detox": "^7.4.3",
+    "codecov": "^3.0.4",
+    "jest": "23.5.0",
+    "mocha": "^5.1.1",
+    "patch-package": "^6.0.0-0",
+    "postinstall-prepare": "^1.0.1",
+    "prop-types": "^15.6.2",
+    "react-dom": "16.3.3",
+    "react-native-typescript-transformer": "^1.2.10",
+    "react-test-renderer": "^16.4.2",
+    "svgr": "^1.10.0",
+    "ts-jest": "^23.1.4",
+    "typescript": "^2.8.3"
+  },
+  "detox": {
+    "configurations": {
+      "ios.sim.debug": {
+        "type": "ios.simulator",
+        "name": "iPad Air",
+        "name0": "iPhone 7"
+      },
+      "android.emu.debug": {
+        "binaryPath": "android/app/build/outputs/apk/debug/app-debug.apk",
+        "build": "cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && cd ..",
+        "type": "android.emulator",
+        "name": "Nexus_5X_API_26"
+      }
+    }
+  },
+  "jest": {
+    "automock": false,
+    "collectCoverage": false,
+    "coverageDirectory": "./coverage/",
+    "preset": "react-native",
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js",
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.jest.json"
+      }
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "testPathIgnorePatterns": [
+      "/helpers/"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "repository": {
+    "type": "git"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts/"
+    ]
+  }
+}
