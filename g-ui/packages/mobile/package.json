@@ -1,4 +1,4 @@
-{
+{ "name": "@g-ui/state-manager",
   "version": "0.3.19",
   "private": true,
   "scripts": {
