@@ -82,7 +82,7 @@
     "babel-jest": "^23.0.1",
     "babel-preset-react-native": "5",
     "detox": "^7.4.3",
-    "codecov": "^3.0.4",
+    "codecov": "^3.6.5",
     "jest": "23.5.0",
     "mocha": "^5.1.1",
     "patch-package": "^6.0.0-0",
