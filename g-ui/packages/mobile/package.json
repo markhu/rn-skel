@@ -23,7 +23,7 @@
     "d3": "^5.5.0",
     "from-exponential": "^1.0.0",
     "jsc-android": "224109.1.0",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.19",
     "lottie-react-native": "^2.5.0",
     "matter-attractors": "^0.1.6",
     "matter-js": "^0.14.2",
