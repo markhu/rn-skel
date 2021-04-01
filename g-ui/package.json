@@ -42,7 +42,7 @@
     "prettier": "^1.11.1",
     "tslint": "^5.9.1",
     "typescript": "^2.8.3",
-    "snyk": "^1.316.1"
+    "snyk": "^1.518.0"
   },
   "devDependencies": {
     "tslint-config-prettier": "^1.12.0"
